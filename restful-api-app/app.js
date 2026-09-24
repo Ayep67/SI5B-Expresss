@@ -26,6 +26,14 @@
 
     // GET /mahasiswa -> menampilkan seluruh data
     app.get('/mahasiswa', (req, res) => {
+        const {jurusan} = req.query;
+
+        if(jurusan){
+            const hasil = mahasiswa.filter((m) =>
+            m.jurusan === jurusan);
+            return res.json(hasil);
+        }
+
         res.json(mahasiswa);
 });
 
